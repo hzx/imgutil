@@ -1,0 +1,6 @@
+include_rules
+
+LIBS += `GraphicsMagick++-config --libs`
+
+: foreach *.cpp |> !ccp |> {objs}
+: {objs} |> !lib |>
