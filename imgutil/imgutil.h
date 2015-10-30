@@ -15,6 +15,7 @@ const int IMAGE_ERROR_READ = 1;
 const int IMAGE_ERROR_SIZES = 2;
 const int IMAGE_ERROR_SMALLER = 3;
 
+void initLib();
 
 // resize src image to width, height size
 // rationWidth - save ratio by width, real height not equal to height
@@ -25,6 +26,9 @@ int resizeImage(string dest, string src, size_t width, size_t height);
 /* int resizeSmart(string dest, string src, size_t width, size_t height); */
 /* int resizeSmartBunch(string dest, string src, vector<size_t> sizes); */
 int resizeThumb(string dest, string src, size_t width, size_t height);
+
+std::string createFilename(std::string path, std::string filename,
+    size_t width, size_t height);
 
 
 #endif /* end of include guard: IMGUTIL_H */

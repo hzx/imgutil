@@ -1,11 +1,17 @@
 #include <list>
 #include <cstring>
+#include <sstream>
 #include <Magick++.h>
 #include "imgutil.h"
 
 
 using Magick::Image;
 using Magick::Geometry;
+
+
+void initLib() {
+  Magick::InitializeMagick(NULL);
+}
 
 
 int resizeImage(string dest, string src, size_t width, size_t height) {
@@ -154,4 +160,14 @@ int resizeThumb(string dest, string src, size_t width, size_t height) {
   image.write(dest);
 
   return IMAGE_ERROR_OK;
+}
+
+
+std::string createFilename(std::string path, std::string filename,
+    size_t width, size_t height) {
+  std::ostringstream buf;
+
+  buf << path << width << 'x' << height << '-' << filename;
+
+  return buf.str();
 }
